@@ -1,12 +1,12 @@
 """
 Version 1.2.5
 -------------
-- - - 
+- - -
 
 Introduction
 ============
 
-netcdf4-python is a Python interface to the netCDF C library.  
+netcdf4-python is a Python interface to the netCDF C library.
 
 [netCDF](http://www.unidata.ucar.edu/software/netcdf/) version 4 has many features
 not found in earlier versions of the library and is implemented on top of
@@ -28,7 +28,7 @@ types) are not supported.
 Download
 ========
 
- - Latest bleeding-edge code from the 
+ - Latest bleeding-edge code from the
    [github repository](http://github.com/Unidata/netcdf4-python).
  - Latest [releases](https://pypi.python.org/pypi/netCDF4)
    (source code and windows installers).
@@ -55,7 +55,7 @@ Requires
  [OPeNDAP](http://opendap.org) support.
  - [HDF4](http://www.hdfgroup.org/products/hdf4), if you want
  to be able to read HDF4 "Scientific Dataset" (SD) files.
- - The netCDF-4 C library from 
+ - The netCDF-4 C library from
  [ftp://ftp.unidata.ucar.edu/pub/netcdf](ftp://ftp.unidata.ucar.edu/pub/netcdf).
  Version 4.1.1 or higher is required (4.2 or higher recommended).
  Be sure to build with `--enable-netcdf-4 --enable-shared`, and set
@@ -83,14 +83,14 @@ Install
  necessary).
  - [`pip install`](https://pip.pypa.io/en/latest/reference/pip_install.html) can
    also be used, with library paths set with environment variables. To make
-   this work, the `USE_SETUPCFG` environment variable must be used to tell 
+   this work, the `USE_SETUPCFG` environment variable must be used to tell
    setup.py not to use `setup.cfg`.
    For example, `USE_SETUPCFG=0 HDF5_INCDIR=/usr/include/hdf5/serial
    HDF5_LIBDIR=/usr/lib/x86_64-linux-gnu/hdf5/serial pip install` has been
    shown to work on an Ubuntu/Debian linux system. Similarly, environment variables
    (all capitalized) can be used to set the include and library paths for
    `hdf5`, `netCDF4`, `hdf4`, `szip`, `jpeg`, `curl` and `zlib`. If the
-   libraries are installed in standard places (e.g. `/usr` or `/usr/local`), 
+   libraries are installed in standard places (e.g. `/usr` or `/usr/local`),
    the environment variables do not need to be set.
  - run the tests in the 'test' directory by running `python run_all.py`.
 
@@ -118,11 +118,11 @@ constructor. This is also the method used to open an existing netCDF
 file.  If the file is open for write access (`mode='w', 'r+'` or `'a'`), you may
 write any type of data including new dimensions, groups, variables and
 attributes.  netCDF files come in five flavors (`NETCDF3_CLASSIC,
-NETCDF3_64BIT_OFFSET, NETCDF3_64BIT_DATA, NETCDF4_CLASSIC`, and `NETCDF4`). 
-`NETCDF3_CLASSIC` was the original netcdf binary format, and was limited 
+NETCDF3_64BIT_OFFSET, NETCDF3_64BIT_DATA, NETCDF4_CLASSIC`, and `NETCDF4`).
+`NETCDF3_CLASSIC` was the original netcdf binary format, and was limited
 to file sizes less than 2 Gb. `NETCDF3_64BIT_OFFSET` was introduced
 in version 3.6.0 of the library, and extended the original binary format
-to allow for file sizes greater than 2 Gb. 
+to allow for file sizes greater than 2 Gb.
 `NETCDF3_64BIT_DATA` is a new format that requires version 4.4.0 of
 the C library - it extends the `NETCDF3_64BIT_OFFSET` binary format to
 allow for unsigned/64 bit integer data types and 64-bit dimension sizes.
@@ -177,9 +177,9 @@ in a netCDF 3 file you will get an error message.
     >>> fcstgrp = rootgrp.createGroup("forecasts")
     >>> analgrp = rootgrp.createGroup("analyses")
     >>> print rootgrp.groups
-    OrderedDict([("forecasts", 
+    OrderedDict([("forecasts",
                   <netCDF4._netCDF4.Group object at 0x1b4b7b0>),
-                 ("analyses", 
+                 ("analyses",
                   <netCDF4._netCDF4.Group object at 0x1b4b970>)])
 
 Groups can exist within groups in a `netCDF4.Dataset`, just as directories
@@ -196,7 +196,7 @@ use a unix-like path as an argument to `netCDF4.Dataset.createGroup`.
 
 If any of the intermediate elements of the path do not exist, they are created,
 just as with the unix command `'mkdir -p'`. If you try to create a group
-that already exists, no error will be raised, and the existing group will be 
+that already exists, no error will be raised, and the existing group will be
 returned.
 
 Here's an example that shows how to navigate all the groups in a
@@ -361,7 +361,7 @@ You can use a path to create a Variable inside a hierarchy of groups.
 
 If the intermediate groups do not yet exist, they will be created.
 
-You can also query a `netCDF4.Dataset` or `netCDF4.Group` instance directly to obtain `netCDF4.Group` or 
+You can also query a `netCDF4.Dataset` or `netCDF4.Group` instance directly to obtain `netCDF4.Group` or
 `netCDF4.Variable` instances using paths.
 
     :::python
@@ -835,7 +835,7 @@ netCDF4 has an enumerated data type, which is an integer datatype that is
 restricted to certain named values. Since Enums don't map directly to
 a numpy data type, they are read and written as integer arrays.
 
-Here's an example of using an Enum type to hold cloud type data. 
+Here's an example of using an Enum type to hold cloud type data.
 The base integer data type and a python dictionary describing the allowed
 values and their names are used to define an Enum data type using
 `netCDF4.Dataset.createEnumType`.
@@ -843,7 +843,7 @@ values and their names are used to define an Enum data type using
     :::python
     >>> nc = Dataset('clouds.nc','w')
     >>> # python dict with allowed values and their names.
-    >>> enum_dict = {u'Altocumulus': 7, u'Missing': 255, 
+    >>> enum_dict = {u'Altocumulus': 7, u'Missing': 255,
     >>> u'Stratus': 2, u'Clear': 0,
     >>> u'Nimbostratus': 6, u'Cumulus': 4, u'Altostratus': 5,
     >>> u'Cumulonimbus': 1, u'Stratocumulus': 3}
@@ -942,6 +942,7 @@ __version__ = "1.2.5"
 # Initialize numpy
 import posixpath
 import netcdftime
+from netcdftime import num2date, date2num, date2index
 import numpy
 import weakref
 import sys
@@ -989,9 +990,9 @@ _needsworkaround_issue485 = __netcdf4libversion__ < "4.4.0" or \
 if __netcdf4libversion__[0:5] < "4.4.1" and\
    __hdf5libversion__.startswith("1.10"):
     msg = """
-WARNING: Backwards incompatible files will be created with HDF5 1.10.x 
-and netCDF < 4.4.1. Upgrading to netCDF4 >= 4.4.1 or downgrading to 
-to HDF5 version 1.8.x is highly recommended 
+WARNING: Backwards incompatible files will be created with HDF5 1.10.x
+and netCDF < 4.4.1. Upgrading to netCDF4 >= 4.4.1 or downgrading to
+to HDF5 version 1.8.x is highly recommended
 (see https://github.com/Unidata/netcdf-c/issues/250)."""
     warnings.warn(msg)
 
@@ -1258,7 +1259,7 @@ cdef _set_att(grp, int varid, name, value,\
        is_netcdf3):
         value_arr = value_arr.astype('i4')
     # if array contains ascii strings, write a text attribute (stored as bytes).
-    # if array contains unicode strings, and data model is NETCDF4, 
+    # if array contains unicode strings, and data model is NETCDF4,
     # write as a string.
     if value_arr.dtype.char in ['S','U']:
         if not is_netcdf3 and force_ncstring and value_arr.size > 1:
@@ -1610,7 +1611,7 @@ dimensions defined for the `netCDF4.Group` or `netCDF4.Dataset` to instances of 
 `netCDF4.Dimension` class.
 
 **`variables`**: The `variables` dictionary maps the names of variables
-defined for this `netCDF4.Dataset` or `netCDF4.Group` to instances of the 
+defined for this `netCDF4.Dataset` or `netCDF4.Group` to instances of the
 `netCDF4.Variable` class.
 
 **`groups`**: The groups dictionary maps the names of groups created for
@@ -1623,11 +1624,11 @@ compound types defined for the `netCDF4.Group` or `netCDF4.Dataset` to instances
 `netCDF4.CompoundType` class.
 
 **`vltypes`**: The `vltypes` dictionary maps the names of
-variable-length types defined for the `netCDF4.Group` or `netCDF4.Dataset` to instances 
+variable-length types defined for the `netCDF4.Group` or `netCDF4.Dataset` to instances
 of the `netCDF4.VLType` class.
 
 **`enumtypes`**: The `enumtypes` dictionary maps the names of
-Enum types defined for the `netCDF4.Group` or `netCDF4.Dataset` to instances 
+Enum types defined for the `netCDF4.Group` or `netCDF4.Dataset` to instances
 of the `netCDF4.EnumType` class.
 
 **`data_model`**: `data_model` describes the netCDF
@@ -1651,7 +1652,7 @@ the `netCDF4.Dataset` in a unix directory format (the names of groups in the
 hierarchy separated by backslashes). A `netCDF4.Dataset` instance is the root
 group, so the path is simply `'/'`.
 
-**`keepweakref`**: If `True`, child Dimension and Variables objects only keep weak 
+**`keepweakref`**: If `True`, child Dimension and Variables objects only keep weak
 references to the parent Dataset or Group.
     """
     cdef object __weakref__
@@ -1708,7 +1709,7 @@ references to the parent Dataset or Group.
     group, so the path is simply `'/'`."""
     __pdoc__['Dataset.keepweakref']=\
     """If `True`, child Dimension and Variables objects only keep weak references to
-    the parent Dataset or Group.""" 
+    the parent Dataset or Group."""
 
     def __init__(self, filename, mode='r', clobber=True, format='NETCDF4',
                  diskless=False, persist=False, keepweakref=False, **kwargs):
@@ -1720,7 +1721,7 @@ references to the parent Dataset or Group.
 
         **`filename`**: Name of netCDF file to hold dataset. Can also
 	be a python 3 pathlib instance or the URL of an OpenDAP dataset.
-        
+
         **`mode`**: access mode. `r` means read-only; no data can be
         modified. `w` means write; a new file is created, an existing file with
         the same name is deleted. `a` and `r+` mean append (in analogy with
@@ -1732,11 +1733,11 @@ references to the parent Dataset or Group.
         access, since it may be faster for programs that don't access data
         sequentially. This option is ignored for `NETCDF4` and `NETCDF4_CLASSIC`
         formatted files.
-        
+
         **`clobber`**: if `True` (default), opening a file with `mode='w'`
         will clobber an existing file with the same name.  if `False`, an
         exception will be raised if a file with the same name already exists.
-        
+
         **`format`**: underlying file format (one of `'NETCDF4',
         'NETCDF4_CLASSIC', 'NETCDF3_CLASSIC'`, `'NETCDF3_64BIT_OFFSET'` or
         `'NETCDF3_64BIT_DATA'`.
@@ -1754,11 +1755,11 @@ references to the parent Dataset or Group.
         file format, which supports 64-bit dimension sizes plus unsigned and
         64 bit integer data types, but is only compatible with clients linked against
         netCDF version 4.4.0 or later.
-        
-        **`diskless`**: If `True`, create diskless (in memory) file.  
+
+        **`diskless`**: If `True`, create diskless (in memory) file.
         This is an experimental feature added to the C library after the
         netcdf-4.2 release.
-        
+
         **`persist`**: if `diskless=True`, persist file to disk when closed
         (default `False`).
 
@@ -2134,7 +2135,7 @@ Creates a new variable with the given `varname`, `datatype`, and
 a scalar.
 
 If `varname` is specified as a path, using forward slashes as in unix to
-separate components, then intermediate groups will be created as necessary 
+separate components, then intermediate groups will be created as necessary
 For example, `createVariable('/GroupA/GroupB/VarC', float, ('x','y'))` will create groups `GroupA`
 and `GroupA/GroupB`, plus the variable `GroupA/GroupB/VarC`, if the preceding
 groups don't already exist.
@@ -2206,7 +2207,7 @@ with `zlib=True` this produces 'lossy', but significantly more
 efficient compression. For example, if `least_significant_digit=1`,
 data will be quantized using `numpy.around(scale*data)/scale`, where
 scale = 2**bits, and bits is determined so that a precision of 0.1 is
-retained (in this case bits=4). From the 
+retained (in this case bits=4). From the
 [PSD metadata conventions](http://www.esrl.noaa.gov/psd/data/gridded/conventions/cdc_netcdf_standard.shtml):
 "least_significant_digit -- power of ten of the smallest decimal place
 in unpacked data that is a reliable value." Default is `None`, or no
@@ -2291,7 +2292,7 @@ rename a `netCDF4.Variable` named `oldname` to `newname`"""
 Creates a new `netCDF4.Group` with the given `groupname`.
 
 If `groupname` is specified as a path, using forward slashes as in unix to
-separate components, then intermediate groups will be created as necessary 
+separate components, then intermediate groups will be created as necessary
 (analogous to `mkdir -p` in unix).  For example,
 `createGroup('/GroupA/GroupB/GroupC')` will create `GroupA`,
 `GroupA/GroupB`, and `GroupA/GroupB/GroupC`, if they don't already exist.
@@ -2365,7 +2366,7 @@ each attribute"""
 **`getncattr(self,name)`**
 
 retrieve a netCDF dataset or group attribute.
-Use if you need to get a netCDF attribute with the same 
+Use if you need to get a netCDF attribute with the same
 name as one of the reserved python attributes."""
         return _get_att(self, NC_GLOBAL, name)
 
@@ -2541,7 +2542,7 @@ after calling this function will follow the default behaviour.
 Returns a list of variables that match specific conditions.
 
 Can pass in key=value parameters and variables are returned that
-contain all of the matches. For example, 
+contain all of the matches. For example,
 
     :::python
     >>> # Get variables with x-axis attribute.
@@ -2592,7 +2593,7 @@ a `netCDF4.Dataset` within a Dataset, and can contain it's own variables,
 dimensions and attributes (and other Groups). See `netCDF4.Group.__init__`
 for more details.
 
-`netCDF4.Group` inherits from `netCDF4.Dataset`, so all the 
+`netCDF4.Group` inherits from `netCDF4.Dataset`, so all the
 `netCDF4.Dataset` class methods and variables are available
 to a `netCDF4.Group` instance (except the `close` method).
 
@@ -2869,12 +2870,12 @@ variable's data type.
 applied. Default is `True`, can be reset using `netCDF4.Variable.set_auto_scale` and
 `netCDF4.Variable.set_auto_maskandscale` methods.
 
-**`mask`**: If True, data is automatically converted to/from masked 
+**`mask`**: If True, data is automatically converted to/from masked
 arrays when missing values or fill values are present. Default is `True`, can be
 reset using `netCDF4.Variable.set_auto_mask` and `netCDF4.Variable.set_auto_maskandscale`
 methods.
 
-**`least_significant_digit`**: Describes the power of ten of the 
+**`least_significant_digit`**: Describes the power of ten of the
 smallest decimal place in the data the contains a reliable value.  Data is
 truncated to this decimal place when it is assigned to the `netCDF4.Variable`
 instance. If `None`, the data is not truncated.
@@ -2909,12 +2910,12 @@ behavior is similar to Fortran or Matlab, but different than numpy.
     applied. Default is `True`, can be reset using `netCDF4.Variable.set_auto_scale` and
     `netCDF4.Variable.set_auto_maskandscale` methods."""
     __pdoc__['Variable.mask'] = \
-    """If True, data is automatically converted to/from masked 
+    """If True, data is automatically converted to/from masked
     arrays when missing values or fill values are present. Default is `True`, can be
     reset using `netCDF4.Variable.set_auto_mask` and `netCDF4.Variable.set_auto_maskandscale`
     methods."""
     __pdoc__['Variable.least_significant_digit'] = \
-    """Describes the power of ten of the 
+    """Describes the power of ten of the
     smallest decimal place in the data the contains a reliable value.  Data is
     truncated to this decimal place when it is assigned to the `netCDF4.Variable`
     instance. If `None`, the data is not truncated."""
@@ -2968,28 +2969,28 @@ behavior is similar to Fortran or Matlab, but different than numpy.
         (for a variable-length array), or the python `str` builtin
         (for a variable-length string array). Numpy string and unicode datatypes with
         length greater than one are aliases for `str`.
-        
+
         **`dimensions`**: a tuple containing the variable's dimension names
         (defined previously with `createDimension`). Default is an empty tuple
         which means the variable is a scalar (and therefore has no dimensions).
-        
+
         **`zlib`**: if `True`, data assigned to the `netCDF4.Variable`
         instance is compressed on disk. Default `False`.
-        
+
         **`complevel`**: the level of zlib compression to use (1 is the fastest,
         but poorest compression, 9 is the slowest but best compression). Default 4.
         Ignored if `zlib=False`.
-        
+
         **`shuffle`**: if `True`, the HDF5 shuffle filter is applied
         to improve compression. Default `True`. Ignored if `zlib=False`.
-        
+
         **`fletcher32`**: if `True` (default `False`), the Fletcher32 checksum
         algorithm is used for error detection.
-        
+
         **`contiguous`**: if `True` (default `False`), the variable data is
         stored contiguously on disk.  Default `False`. Setting to `True` for
         a variable with an unlimited dimension will trigger an error.
-        
+
         **`chunksizes`**: Can be used to specify the HDF5 chunksizes for each
         dimension of the variable. A detailed discussion of HDF chunking and I/O
         performance is available
@@ -2997,7 +2998,7 @@ behavior is similar to Fortran or Matlab, but different than numpy.
         Basically, you want the chunk size for each dimension to match as
         closely as possible the size of the data block that users will read
         from the file. `chunksizes` cannot be set if `contiguous=True`.
-        
+
         **`endian`**: Can be used to control whether the
         data is stored in little or big endian format on disk. Possible
         values are `little, big` or `native` (default). The library
@@ -3006,10 +3007,10 @@ behavior is similar to Fortran or Matlab, but different than numpy.
         opposite format as the one used to create the file, there may be
         some performance advantage to be gained by setting the endian-ness.
         For netCDF 3 files (that don't use HDF5), only `endian='native'` is allowed.
-        
+
         The `zlib, complevel, shuffle, fletcher32, contiguous` and `chunksizes`
         keywords are silently ignored for netCDF 3 files that do not use HDF5.
-        
+
         **`least_significant_digit`**: If specified, variable data will be
         truncated (quantized). In conjunction with `zlib=True` this produces
         'lossy', but significantly more efficient compression. For example, if
@@ -3017,7 +3018,7 @@ behavior is similar to Fortran or Matlab, but different than numpy.
         around(scale*data)/scale, where scale = 2**bits, and bits is determined
         so that a precision of 0.1 is retained (in this case bits=4). Default is
         `None`, or no quantization.
-        
+
         **`fill_value`**:  If specified, the default netCDF `_FillValue` (the
         value that the variable gets filled with before any data is written to it)
         is replaced with this value.  If fill_value is set to `False`, then
@@ -3399,7 +3400,7 @@ behavior is similar to Fortran or Matlab, but different than numpy.
 
     property datatype:
         """numpy data type (for primitive data types) or
-        VLType/CompoundType/EnumType instance 
+        VLType/CompoundType/EnumType instance
         (for compound, vlen  or enum data types)"""
         def __get__(self):
             if self._iscompound:
@@ -3794,7 +3795,7 @@ rename a `netCDF4.Variable` attribute named `oldname` to `newname`."""
             # note: missing_value has to have same endian-ness as variable
             # or this won't work.
             mval = numpy.array(self.missing_value, self.dtype)
-            # create mask from missing values. 
+            # create mask from missing values.
             mvalmask = numpy.zeros(data.shape, numpy.bool)
             # set mask=True for data outside valid_min,valid_max.
             # (issue #576)
@@ -3812,11 +3813,11 @@ rename a `netCDF4.Variable` attribute named `oldname` to `newname`."""
                 if hasattr(self, 'valid_max'):
                     validmax = numpy.array(self.valid_max, self.dtype)
             # http://www.unidata.ucar.edu/software/netcdf/docs/attribute_conventions.html).
-            # "If the data type is byte and _FillValue 
+            # "If the data type is byte and _FillValue
             # is not explicitly defined,
             # then the valid range should include all possible values.
             # Otherwise, the valid range should exclude the _FillValue
-            # (whether defined explicitly or by default) as follows. 
+            # (whether defined explicitly or by default) as follows.
             # If the _FillValue is positive then it defines a valid maximum,
             #  otherwise it defines a valid minimum."
             byte_type = self.dtype.str[1:] in ['u1','i1']
@@ -3841,12 +3842,12 @@ rename a `netCDF4.Variable` attribute named `oldname` to `newname`."""
                     mvalisnan = numpy.isnan(m)
                 except TypeError: # isnan fails on some dtypes (issue 206)
                     mvalisnan = False
-                if mvalisnan: 
+                if mvalisnan:
                     mvalmask += numpy.isnan(data)
                 else:
                     mvalmask += data==mval
             if mvalmask.any():
-                # set fill_value for masked array 
+                # set fill_value for masked array
                 # to missing_value (or 1st element
                 # if missing_value is a vector).
                 fill_value = mval[0]
@@ -4176,7 +4177,7 @@ for each data type).  When data is written to a variable, the masked
 array is converted back to a regular numpy array by replacing all the
 masked values by the missing_value attribute of the variable (if it
 exists).  If the variable has no missing_value attribute, the _FillValue
-is used instead. If the variable has valid_min/valid_max and 
+is used instead. If the variable has valid_min/valid_max and
 missing_value attributes, data outside the specified range will be
 set to missing_value.
 
@@ -4256,7 +4257,7 @@ for each data type).  When data is written to a variable, the masked
 array is converted back to a regular numpy array by replacing all the
 masked values by the missing_value attribute of the variable (if it
 exists).  If the variable has no missing_value attribute, the _FillValue
-is used instead. If the variable has valid_min/valid_max and 
+is used instead. If the variable has valid_min/valid_max and
 missing_value attributes, data outside the specified range will be
 set to missing_value.
 
@@ -4324,7 +4325,7 @@ The default value of `mask` is `True`
             if self.dtype != data.dtype:
                 data = data.astype(self.dtype) # cast data, if necessary.
             # byte-swap data in numpy array so that is has native
-            # endian byte order (this is what netcdf-c expects - 
+            # endian byte order (this is what netcdf-c expects -
             # issue #554, pull request #555)
             if (is_native_little and data.dtype.byteorder == '>') or\
                (is_native_big and data.dtype.byteorder == '<'):
@@ -4528,7 +4529,7 @@ The default value of `mask` is `True`
             # reverse data along axes with negative strides.
             data = data[sl].copy() # make a copy so data is contiguous.
         # netcdf-c always returns data in native byte order,
-        # regardless of variable endian-ness. Here we swap the 
+        # regardless of variable endian-ness. Here we swap the
         # bytes if the variable dtype is not native endian, so the
         # dtype of the returned numpy array matches the variable dtype.
         # (pull request #555, issue #554).
@@ -4548,7 +4549,7 @@ cdef class CompoundType:
     """
 A `netCDF4.CompoundType` instance is used to describe a compound data
 type, and can be passed to the the `netCDF4.Dataset.createVariable` method of
-a `netCDF4.Dataset` or `netCDF4.Group` instance. 
+a `netCDF4.Dataset` or `netCDF4.Group` instance.
 Compound data types map to numpy structured arrays.
 See `netCDF4.CompoundType.__init__` for more details.
 
@@ -4793,7 +4794,7 @@ cdef class VLType:
     """
 A `netCDF4.VLType` instance is used to describe a variable length (VLEN) data
 type, and can be passed to the the `netCDF4.Dataset.createVariable` method of
-a `netCDF4.Dataset` or `netCDF4.Group` instance. See 
+a `netCDF4.Dataset` or `netCDF4.Group` instance. See
 `netCDF4.VLType.__init__` for more details.
 
 The instance variables `dtype` and `name` should not be modified by
@@ -4907,7 +4908,7 @@ cdef class EnumType:
     """
 A `netCDF4.EnumType` instance is used to describe an Enum data
 type, and can be passed to the the `netCDF4.Dataset.createVariable` method of
-a `netCDF4.Dataset` or `netCDF4.Group` instance. See 
+a `netCDF4.Dataset` or `netCDF4.Group` instance. See
 `netCDF4.EnumType.__init__` for more details.
 
 The instance variables `dtype`, `name` and `enum_dict` should not be modified by
@@ -5049,37 +5050,7 @@ def _to_ascii(bytestr):
 #----------------------------------------
 # extra utilities (formerly in utils.pyx)
 #----------------------------------------
-from datetime import timedelta, datetime, MINYEAR
-from netcdftime import _parse_date, microsec_units, millisec_units,\
-                       sec_units, min_units, hr_units, day_units
 
-# start of the gregorian calendar
-gregorian = datetime(1582,10,15)
-
-def _dateparse(timestr):
-    """parse a string of the form time-units since yyyy-mm-dd hh:mm:ss,
-    return a datetime instance"""
-    # same as version in netcdftime, but returns a timezone naive
-    # python datetime instance with the utc_offset included.
-    timestr_split = timestr.split()
-    units = timestr_split[0].lower()
-    if timestr_split[1].lower() != 'since':
-        raise ValueError("no 'since' in unit_string")
-    # parse the date string.
-    n = timestr.find('since')+6
-    isostring = timestr[n:]
-    year, month, day, hour, minute, second, utc_offset =\
-        _parse_date( isostring.strip() )
-    if year >= MINYEAR:
-        basedate = datetime(year, month, day, hour, minute, second)
-        # add utc_offset to basedate time instance (which is timezone naive)
-        basedate += timedelta(days=utc_offset/1440.)
-    else:
-        if not utc_offset:
-            basedate = netcdftime.datetime(year, month, day, hour, minute, second)
-        else:
-            raise ValueError('cannot use utc_offset for reference years <= 0')
-    return basedate
 
 def stringtoarr(string,NUMCHARS,dtype='S'):
     """
@@ -5144,252 +5115,6 @@ returns a numpy string array with datatype `'SN'` or `'UN'` and shape
     a.shape = b.shape[:-1]
     return a
 
-def date2num(dates,units,calendar='standard'):
-    """
-**`date2num(dates,units,calendar='standard')`**
-
-Return numeric time values given datetime objects. The units
-of the numeric time values are described by the `netCDF4.units` argument
-and the `netCDF4.calendar` keyword. The datetime objects must
-be in UTC with no time-zone offset.  If there is a
-time-zone offset in `units`, it will be applied to the
-returned numeric values.
-
-**`dates`**: A datetime object or a sequence of datetime objects.
-The datetime objects should not include a time-zone offset.
-
-**`units`**: a string of the form `<time units> since <reference time>`
-describing the time units. `<time units>` can be days, hours, minutes,
-seconds, milliseconds or microseconds. `<reference time>` is the time
-origin.  
-
-**`calendar`**: describes the calendar used in the time calculations.
-All the values currently defined in the 
-[CF metadata convention](http://cfconventions.org)
-Valid calendars `'standard', 'gregorian', 'proleptic_gregorian'
-'noleap', '365_day', '360_day', 'julian', 'all_leap', '366_day'`.
-Default is `'standard'`, which is a mixed Julian/Gregorian calendar.
-
-returns a numeric time value, or an array of numeric time values 
-with approximately millisecond accuracy.
-    """
-    calendar = calendar.lower()
-    basedate = _dateparse(units)
-    unit = units.split()[0].lower()
-    # real-world calendars limited to positive reference years.
-    if calendar in ['julian', 'standard', 'gregorian', 'proleptic_gregorian']:
-        if basedate.year == 0:
-            msg='zero not allowed as a reference year, does not exist in Julian or Gregorian calendars'
-            raise ValueError(msg)
-        elif basedate.year < 0:
-            msg='negative reference year in time units, must be >= 1'
-            raise ValueError(msg)
-
-    if (calendar == 'proleptic_gregorian' and basedate.year >= MINYEAR) or \
-       (calendar in ['gregorian','standard'] and basedate > gregorian):
-        # use python datetime module,
-        isscalar = False
-        try:
-            dates[0]
-        except:
-            isscalar = True
-        if isscalar:
-            dates = numpy.array([dates])
-        else:
-            dates = numpy.array(dates)
-            shape = dates.shape
-        ismasked = False
-        if hasattr(dates,'mask'):
-            mask = dates.mask
-            ismasked = True
-        times = []
-        for date in dates.flat:
-            if ismasked and not date:
-                times.append(None)
-            else:
-                td = date - basedate
-                # total time in microseconds.
-                totaltime = td.microseconds + (td.seconds + td.days * 24 * 3600) * 1.e6
-                if unit in microsec_units:
-                    times.append(totaltime)
-                elif unit in millisec_units:
-                    times.append(totaltime/1.e3)
-                elif unit in sec_units:
-                    times.append(totaltime/1.e6)
-                elif unit in min_units:
-                    times.append(totaltime/1.e6/60)
-                elif unit in hr_units:
-                    times.append(totaltime/1.e6/3600)
-                elif unit in day_units:
-                    times.append(totaltime/1.e6/3600./24.)
-                else:
-                    raise ValueError('unsupported time units')
-        if isscalar:
-            return times[0]
-        else:
-            return numpy.reshape(numpy.array(times), shape)
-    else: # use netcdftime module for other calendars
-        cdftime = netcdftime.utime(units,calendar=calendar)
-        return cdftime.date2num(dates)
-
-def num2date(times,units,calendar='standard'):
-    """
-**`num2date(times,units,calendar='standard')`**
-
-Return datetime objects given numeric time values. The units
-of the numeric time values are described by the `units` argument
-and the `calendar` keyword. The returned datetime objects represent
-UTC with no time-zone offset, even if the specified
-`units` contain a time-zone offset.
-
-**`times`**: numeric time values.
-
-**`units`**: a string of the form `<time units> since <reference time>`
-describing the time units. `<time units>` can be days, hours, minutes,
-seconds, milliseconds or microseconds. `<reference time>` is the time
-origin.
-
-**`calendar`**: describes the calendar used in the time calculations.
-All the values currently defined in the 
-[CF metadata convention](http://cfconventions.org)
-Valid calendars `'standard', 'gregorian', 'proleptic_gregorian'
-'noleap', '365_day', '360_day', 'julian', 'all_leap', '366_day'`.
-Default is `'standard'`, which is a mixed Julian/Gregorian calendar.
-
-returns a datetime instance, or an array of datetime instances with
-approximately millisecond accuracy.
-
-***Note***: The datetime instances returned are 'real' python datetime
-objects if `calendar='proleptic_gregorian'`, or
-`calendar='standard'` or `'gregorian'`
-and the date is after the breakpoint between the Julian and
-Gregorian calendars (1582-10-15). Otherwise, they are 'phony' datetime
-objects which support some but not all the methods of 'real' python
-datetime objects. The datetime instances
-do not contain a time-zone offset, even if the specified `units`
-contains one.
-    """
-    calendar = calendar.lower()
-    basedate = _dateparse(units)
-    unit = units.split()[0].lower()
-    # real-world calendars limited to positive reference years.
-    if calendar in ['julian', 'standard', 'gregorian', 'proleptic_gregorian']:
-        if basedate.year == 0:
-            msg='zero not allowed as a reference year, does not exist in Julian or Gregorian calendars'
-            raise ValueError(msg)
-        elif basedate.year < 0:
-            msg='negative reference year in time units, must be >= 1'
-            raise ValueError(msg)
-
-    if (calendar == 'proleptic_gregorian' and basedate.year >= MINYEAR) or \
-       (calendar in ['gregorian','standard'] and basedate > gregorian):
-        # use python datetime module,
-        isscalar = False
-        try:
-            times[0]
-        except:
-            isscalar = True
-        if isscalar:
-            times = numpy.array([times],dtype='d')
-        else:
-            times = numpy.array(times, dtype='d')
-            shape = times.shape
-        ismasked = False
-        if hasattr(times,'mask'):
-            mask = times.mask
-            ismasked = True
-        dates = []
-        for time in times.flat:
-            if ismasked and not time:
-                dates.append(None)
-            else:
-                # convert to total seconds
-                if unit in microsec_units:
-                    tsecs = time/1.e6
-                elif unit in millisec_units:
-                    tsecs = time/1.e3
-                elif unit in sec_units:
-                    tsecs = time
-                elif unit in min_units:
-                    tsecs = time*60.
-                elif unit in hr_units:
-                    tsecs = time*3600.
-                elif unit in day_units:
-                    tsecs = time*86400.
-                else:
-                    raise ValueError('unsupported time units')
-                # compute time delta.
-                days = tsecs // 86400.
-                msecsd = tsecs*1.e6 - days*86400.*1.e6
-                secs = msecsd // 1.e6
-                msecs = numpy.round(msecsd - secs*1.e6)
-                td = timedelta(days=days,seconds=secs,microseconds=msecs)
-                # add time delta to base date.
-                date = basedate + td
-                dates.append(date)
-        if isscalar:
-            return dates[0]
-        else:
-            return numpy.reshape(numpy.array(dates), shape)
-    else: # use netcdftime for other calendars
-        cdftime = netcdftime.utime(units,calendar=calendar)
-        return cdftime.num2date(times)
-
-def date2index(dates, nctime, calendar=None, select='exact'):
-    """
-**`date2index(dates, nctime, calendar=None, select='exact')`**
-
-Return indices of a netCDF time variable corresponding to the given dates.
-
-**`dates`**: A datetime object or a sequence of datetime objects.
-The datetime objects should not include a time-zone offset.
-
-**`nctime`**: A netCDF time variable object. The nctime object must have a
-`units` attribute.
-
-**`calendar`**: describes the calendar used in the time calculations.
-All the values currently defined in the 
-[CF metadata convention](http://cfconventions.org)
-Valid calendars `'standard', 'gregorian', 'proleptic_gregorian'
-'noleap', '365_day', '360_day', 'julian', 'all_leap', '366_day'`.
-Default is `'standard'`, which is a mixed Julian/Gregorian calendar.
-If `calendar` is None, its value is given by `nctime.calendar` or
-`standard` if no such attribute exists.
-
-**`select`**: `'exact', 'before', 'after', 'nearest'`
-The index selection method. `exact` will return the indices perfectly
-matching the dates given. `before` and `after` will return the indices
-corresponding to the dates just before or just after the given dates if
-an exact match cannot be found. `nearest` will return the indices that
-correspond to the closest dates.
-
-returns an index (indices) of the netCDF time variable corresponding
-to the given datetime object(s).
-    """
-    try: 
-        nctime.units
-    except AttributeError:
-        raise AttributeError("netcdf time variable is missing a 'units' attribute")
-    if calendar == None:
-        calendar = getattr(nctime, 'calendar', 'standard')
-    calendar = calendar.lower()
-    basedate = _dateparse(nctime.units)
-    # real-world calendars limited to positive reference years.
-    if calendar in ['julian', 'standard', 'gregorian', 'proleptic_gregorian']:
-        if basedate.year == 0:
-            msg='zero not allowed as a reference year, does not exist in Julian or Gregorian calendars'
-            raise ValueError(msg)
-        elif basedate.year < 0:
-            msg='negative reference year in time units, must be >= 1'
-            raise ValueError(msg)
-
-    if (calendar == 'proleptic_gregorian' and basedate.year >= MINYEAR) or \
-       (calendar in ['gregorian','standard'] and basedate > gregorian):
-        # use python datetime
-        times = date2num(dates,nctime.units,calendar=calendar)
-        return netcdftime.time2index(times, nctime, calendar, select)
-    else: # use netcdftime module for other cases
-        return netcdftime.date2index(dates, nctime, calendar, select)
 
 class MFDataset(Dataset):
     """
@@ -5431,23 +5156,23 @@ Example usage (See `netCDF4.MFDataset.__init__` for more details):
         `aggdim` is not specified, the unlimited is aggregated.  Currently,
         `aggdim` must be the leftmost (slowest varying) dimension of each
         of the variables to be aggregated.
-        
+
         **`files`**: either a sequence of netCDF files or a string with a
         wildcard (converted to a sorted list of files using glob)  The first file
         in the list will become the "master" file, defining all the
         variables with an aggregation dimension which may span
         subsequent files. Attribute access returns attributes only from "master"
         file. The files are always opened in read-only mode.
-        
+
         **`check`**: True if you want to do consistency checking to ensure the
         correct variables structure for all of the netcdf files.  Checking makes
         the initialization of the MFDataset instance much slower. Default is
         False.
-        
+
         **`aggdim`**: The name of the dimension to aggregate over (must
         be the leftmost dimension of each of the variables to be aggregated).
         If None (default), aggregate over the unlimited dimension.
-        
+
         **`exclude`**: A list of variable names to exclude from aggregation.
         Default is an empty list.
        """
@@ -5622,10 +5347,10 @@ Example usage (See `netCDF4.MFDataset.__init__` for more details):
     def set_auto_maskandscale(self, value):
         """
         **`set_auto_maskandscale(self, True_or_False)`**
-        
+
         Call `Variable.set_auto_maskandscale` for all variables contained in this
         `MFDataset`.
-        
+
         **`True_or_False`**: Boolean determining if automatic conversion to masked arrays
         and variable scaling shall be applied for all variables.
         """
@@ -5636,9 +5361,9 @@ Example usage (See `netCDF4.MFDataset.__init__` for more details):
     def set_auto_mask(self, value):
         """
         **`set_auto_mask(self, True_or_False)`**
-        
+
         Call `Variable.set_auto_mask` for all variables contained in this `MFDataset`.
-        
+
         **`True_or_False`**: Boolean determining if automatic conversion to masked arrays
         shall be applied for all variables.
         """
@@ -5649,9 +5374,9 @@ Example usage (See `netCDF4.MFDataset.__init__` for more details):
     def set_auto_scale(self, value):
         """
         **`set_auto_scale(self, True_or_False)`**
-        
+
         Call `Variable.set_auto_scale` for all variables contained in this `MFDataset`.
-        
+
         **`True_or_False`**: Boolean determining if automatic variable scaling
         shall be applied for all variables.
         """
@@ -5866,7 +5591,7 @@ class _Variable(object):
 class MFTime(_Variable):
     """
 Class providing an interface to a MFDataset time Variable by imposing a unique common
-time unit to all files. 
+time unit to all files.
 
 Example usage (See `netCDF4.MFTime.__init__` for more details):
 
@@ -5904,9 +5629,9 @@ Example usage (See `netCDF4.MFTime.__init__` for more details):
 
         Create a time Variable with units consistent across a multifile
         dataset.
-        
+
         **`time`**: Time variable from a `netCDF4.MFDataset`.
-        
+
         **`units`**: Time units, for example, `days since 1979-01-01`. If None, use
         the units from the master variable.
         """

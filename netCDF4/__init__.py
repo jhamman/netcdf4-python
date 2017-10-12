@@ -1,6 +1,7 @@
 # init for netCDF4. package
 # Docstring comes from extension module _netCDF4.
 from ._netCDF4 import *
+from netcdftime import num2date, date2num, date2index
 # Need explicit imports for names beginning with underscores
 from ._netCDF4 import __doc__, __pdoc__
 from ._netCDF4 import (__version__, __netcdf4libversion__, __hdf5libversion__,
